@@ -1,0 +1,39 @@
+<!-- templates/add_edit_delete_room.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ action }} Room</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <section class="container mt-5">
+        <h2 class="fw-bold text-center">{{ action }} Room</h2>
+        <form method="post" action="{{ url_for('add_room') if action == 'Add' else url_for('edit_room', room_id=room[0]) }}">
+            <div class="form-group">
+                <label for="num_beds">Beds</label>
+                <input type="number" class="form-control" id="num_beds" name="num_beds" value="{{ room[1] if action == 'Edit' else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="num_rooms"> Rooms</label>
+                <input type="number" class="form-control" id="num_rooms" name="num_rooms" value="{{ room[2] if action == 'Edit' else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="num_sofas"> Sofas</label>
+                <input type="number" class="form-control" id="num_sofas" name="num_sofas" value="{{ room[3] if action == 'Edit' else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" value="{{ room[4] if action == 'Edit' else '' }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">{{ action }} Room</button>
+        </form>
+        {% if action == 'Edit' %}
+            <a href="{{ url_for('delete_room', room_id=room[0]) }}" class="btn btn-danger mt-2">Delete Room</a>
+        {% endif %}
+        <a href="{{ url_for('admin_page') }}" class="btn btn-secondary mt-2">Back to Admin Page</a>
+    </section>
+</body>
+</html>

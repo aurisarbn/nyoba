@@ -1,0 +1,60 @@
+<!-- templates/admin_page.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <section class="container mt-5">
+        <h2 class="fw-bold text-center">Admin Page</h2>
+        <div class="row">
+            {% for room in rooms %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ room[1] }}-Bedroom</h5>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Features</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                {{ room[1] }}  Beds  
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                {{ room[3] }} Sofa 
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Price: Rp. {{ room[4] }}/night
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                 {{ room[3] }} Balcony
+                            </span>
+                          </div>
+                          <div class="Facilities mb-3">
+                            <h6 class="mb-1">Facilities</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                              Wifi
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                              Television
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                              AC
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                              Room Heater
+                            </span>
+                          </div>
+                        <a href="{{ url_for('edit_room', room_id=room[0]) }}" class="btn btn-sm btn-outline-primary w-100 shadow-none mb-2">Edit</a>
+                        <a href="{{ url_for('delete_room', room_id=room[0]) }}" class="btn btn-sm btn-outline-danger w-100 shadow-none mb-2">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('add_room') }}" class="btn btn-success">Add Room</a>
+    </section>
+</body>
+</html>

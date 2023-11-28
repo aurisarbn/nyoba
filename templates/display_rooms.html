@@ -1,0 +1,58 @@
+<!-- templates/display_rooms.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Rooms</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <section class="container mt-5">
+        <h2 class="fw-bold text-center">OUR ROOMS</h2>
+        <div class="row">
+            {% for room in rooms %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ room[1] }}-Bedroom</h5>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Features</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                {{ room[1] }}  Beds  
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                {{ room[3] }} Sofa 
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Price: Rp. {{ room[4] }}/night
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                 {{ room[3] }} Balcony
+                            </span>
+                          </div>
+                          <div class="Facilities mb-3">
+                            <h6 class="mb-1">Facilities</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                              Wifi
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                              Television
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                              AC
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                              Room Heater
+                            </span>
+                          </div>
+                        <a href="#booking" class="btn btn-sm btn-outline-success w-100 shadow-none mb-2">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
